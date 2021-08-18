@@ -32,6 +32,9 @@ class VideoCap:
         self.thd1=Thread(target=self.get, args=())
         self.thd1.daemon=True
         self.thd1.start()
+        self.thd2=Thread(target=self.detect, args=())
+        self.thd2.daemon=True
+        self.thd2.start()
         
     
     def get(self):
@@ -96,19 +99,19 @@ class VideoCap:
         
         
     
-    # def show(self):
-    #     print("In show function")
-    #     self.lock.acquire()
-    #     img = self.img.copy()
-    #     self.lock.release()
-    #     cv2.putText(img, str(self.fps), (20, 50), cv2.FONT_HERSHEY_PLAIN, 3,(255, 0, 0), 3)
-    #     cv2.imshow("Video", img)
+    def show(self):
+        print("In show function")
+        self.lock.acquire()
+        img = self.img.copy()
+        self.lock.release()
+        cv2.putText(img, str(self.fps), (20, 50), cv2.FONT_HERSHEY_PLAIN, 3,(255, 0, 0), 3)
+        cv2.imshow("Video", img)
 
     
 vc = VideoCap(0)
 vc.start()
 while True:
-    vc.detect()
+    vc.show()
     if cv2.waitKey(50) == ord("q"):
         break
     
