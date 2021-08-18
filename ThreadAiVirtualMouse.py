@@ -32,10 +32,7 @@ class VideoCap:
         self.thd1=Thread(target=self.get, args=())
         self.thd1.daemon=True
         self.thd1.start()
-        # self.thd2=Thread(target=self.detect, args=())
-        # self.thd2.daemon=True
-        # self.thd2.start()
-        # self.thd3=Thread(target=self.show, args=()).start()
+        
     
     def get(self):
         while not self.stopped:
