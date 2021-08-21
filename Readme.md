@@ -17,4 +17,4 @@ python ThreadAiVirtualMouse.py # run the handtracking module with threading
 - Without Thead:
     The FPS is about 30. 
 - Use one thread in getting picture:
-    The FPS for showing picture is 7~10. 
+    The FPS for showing picture is now 40~50, but it a little bit unstable.

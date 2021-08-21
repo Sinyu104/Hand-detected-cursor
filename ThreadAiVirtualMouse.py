@@ -36,7 +36,7 @@ class VideoCap:
     
     def get(self):
         while not self.stopped:
-            # print("In get Thread")
+            print("In get Thread")
             success, img = self.cap.read()
             self.lock.acquire()
             (self.success, self.img) = success, img
