@@ -94,8 +94,6 @@ class VideoCap:
         self.cTime = time.time()
         self.fps = 1 / (self.cTime - self.pTime)
         self.pTime = self.cTime
-        cv2.putText(img, str(self.fps), (20, 50), cv2.FONT_HERSHEY_PLAIN, 3,(255, 0, 0), 3)
-        cv2.imshow("Video", img)
         
         
     
