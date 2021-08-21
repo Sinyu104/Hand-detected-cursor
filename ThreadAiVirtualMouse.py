@@ -50,7 +50,7 @@ class VideoCap:
     def detect(self):
         print("In detect Thread")
         self.lock.acquire()
-        img = self.img.copy()
+        img = self.img
         self.lock.release()
         img = self.detector.findHands(img)
         self.lmList, self.bbox = self.detector.findPosition(img)
@@ -102,7 +102,7 @@ class VideoCap:
     def show(self):
         print("In show function")
         self.lock.acquire()
-        img = self.img.copy()
+        img = self.img
         self.lock.release()
         cv2.putText(img, str(self.fps), (20, 50), cv2.FONT_HERSHEY_PLAIN, 3,(255, 0, 0), 3)
         cv2.imshow("Video", img)
@@ -112,6 +112,6 @@ vc = VideoCap(0)
 vc.start()
 while True:
     vc.show()
-    if cv2.waitKey(50) == ord("q"):
+    if cv2.waitKey(1) == ord("q"):
         break
     
