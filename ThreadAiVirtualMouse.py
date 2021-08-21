@@ -36,7 +36,7 @@ class VideoCap:
     
     def get(self):
         while not self.stopped:
-            print("In get Thread")
+            # print("In get Thread")
             success, img = self.cap.read()
             self.lock.acquire()
             (self.success, self.img) = success, img
@@ -47,7 +47,7 @@ class VideoCap:
     def detect(self):
         print("In detect Thread")
         self.lock.acquire()
-        img = self.img.copy()
+        img = self.img
         self.lock.release()
         img = self.detector.findHands(img)
         self.lmList, self.bbox = self.detector.findPosition(img)
@@ -109,6 +109,6 @@ vc = VideoCap(0)
 vc.start()
 while True:
     vc.detect()
-    if cv2.waitKey(50) == ord("q"):
+    if cv2.waitKey(1) == ord("q"):
         break
     
